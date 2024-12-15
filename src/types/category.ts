@@ -76,7 +76,7 @@ interface HtmlComponent {
   htmlString?: string;
 }
 
-interface GameList {
+export interface GameList {
   id: string;
   type: "game-list";
   listParameters: {
