@@ -13,6 +13,10 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    // handled by eslint
+    "noUnusedLocals": false,
+    // handled by eslint
+    "noUnusedParameters": false,
     "plugins": [
       {
         "name": "next"
