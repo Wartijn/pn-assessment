@@ -14,7 +14,7 @@ interface BetSize {
   max?: number;
 }
 
-interface GameTile {
+export interface GameTile {
   type: "game-tile";
   id: string;
   platformId: string;

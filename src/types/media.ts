@@ -17,6 +17,12 @@ export interface Image {
 }
 
 export interface AnimatedSvg {
-  mobile: Image;
-  desktop: Image;
+  mobile: {
+    alt: string;
+    original: ImageVariant;
+  };
+  desktop: {
+    alt: string;
+    original: ImageVariant;
+  };
 }

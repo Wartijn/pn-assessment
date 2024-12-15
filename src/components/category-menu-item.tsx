@@ -1,4 +1,5 @@
 import { MenuItem } from "@/types/config";
+import { ListItem, ListItemText } from "@mui/material";
 import Link from "next/link";
 
 export default async function CategoryMenuItem({
@@ -7,10 +8,10 @@ export default async function CategoryMenuItem({
   category: MenuItem;
 }) {
   return (
-    <>
+    <ListItem disablePadding>
       <Link href={category.path}>
-        <h1>{category.name}</h1>
+        <ListItemText primary={category.name} />
       </Link>
-    </>
+    </ListItem>
   );
 }

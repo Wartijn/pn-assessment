@@ -4,7 +4,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import theme from "@/utils/theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { roboto } from "@/utils/fonts";
-import { CssBaseline } from "@mui/material";
+import { Box, Container, CssBaseline } from "@mui/material";
 
 export const metadata: Metadata = {
   title: "Pikakasino game lobby interface",
@@ -22,9 +22,11 @@ export default function RootLayout({
       <body className={roboto.variable}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <CategoryMenu />
-            {children}
+            <Box sx={{ display: "flex" }}>
+              <CssBaseline />
+              <CategoryMenu />
+              {children}
+            </Box>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

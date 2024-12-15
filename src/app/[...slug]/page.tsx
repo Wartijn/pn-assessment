@@ -1,5 +1,9 @@
+import GameListItem from "@/components/game-list-item";
 import { GameList } from "@/types/category";
 import { getCategory } from "@/utils/api";
+import { drawerWidth } from "@/utils/consts";
+import { AppBar, Box, Toolbar, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 
 export default async function Page({
   params,
@@ -12,16 +16,35 @@ export default async function Page({
   const gameList: GameList = category.components.find(
     (c) => c?.type === "game-list",
   )!;
-  console.log(category);
   return (
     <>
-      <h1>{category.meta.title}</h1>
-      <h2>{category.meta.description}</h2>
-      <h2>Game list</h2>
-      total{gameList.total}, nextPage {gameList.nextPage}
-      {gameList.games.map((gameTitle) => (
-        <span key={gameTitle.id}>{gameTitle.gameText}</span>
-      ))}
+      <AppBar
+        sx={{
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          ml: { sm: `${drawerWidth}px` },
+        }}
+      >
+        <Toolbar>
+          <Typography variant="h6" noWrap component="div">
+            {category.meta.title}
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+        }}
+      >
+        <Toolbar />
+        <Grid container spacing={2}>
+          {gameList.games.map((game) => (
+            <GameListItem key={game.id} game={game}></GameListItem>
+          ))}
+        </Grid>
+      </Box>
     </>
   );
 }
