@@ -8,7 +8,7 @@ import Grid from "@mui/material/Grid2";
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string[] }>;
+  params: Promise<{ slug: string }>;
 }) {
   const slug = (await params).slug;
   const category = await getCategory(slug);

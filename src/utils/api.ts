@@ -8,13 +8,16 @@ export async function getMenuItems(): Promise<MenuItem[]> {
   const respBody: Promise<ConfigResponse> = (
     await fetch(`${BASE_URL}/en/config`)
   ).json();
-  return (await respBody).menu.lobby.items;
+  return (await respBody).menu.lobby.items.filter(
+    (item) => item.type === "categoryFilter" || item.type === "allGames",
+  );
 }
 
-export async function getCategory(slug: string[]): Promise<CategoryResponse> {
-  const url = (await getMenuItems()).find(
-    (item) => item.path === `/${slug.join("/")}`,
-  )?.links.getPage;
+export async function getCategory(slug: string): Promise<CategoryResponse> {
+  const url = (await getMenuItems()).find((item) => {
+    const split = item.path.split("/");
+    return split[split.length - 1] === slug;
+  })?.links.getPage;
 
   if (!url) {
     throw new Error();
