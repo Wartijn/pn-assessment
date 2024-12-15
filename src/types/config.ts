@@ -1,5 +1,7 @@
-// these types are based on the response form a call to /v1/pika/en/config
+// these types are based on the response from a call to /v1/pika/en/config
 // todo generate these types using the api docs
+
+import { AnimatedSvg, Image } from "@/types/media";
 
 export interface ConfigResponse {
   gamesOfTheMonth: GameTile[];
@@ -34,33 +36,6 @@ export interface MenuItem {
   animatedSvg: AnimatedSvg;
   type: "categoryRows" | "categoryFilter" | "allGames" | "liveCategoryRows";
   categoryFilter: string | null;
-}
-
-interface ImageMetadata {
-  size?: number;
-  width?: number;
-  height?: number;
-}
-
-interface Image {
-  alt: string;
-  original?: {
-    src: string;
-    metadata: ImageMetadata;
-  };
-  small?: {
-    src: string;
-    metadata: ImageMetadata;
-  };
-  thumbnail?: {
-    src: string;
-    metadata: ImageMetadata;
-  };
-}
-
-interface AnimatedSvg {
-  mobile: Image;
-  desktop: Image;
 }
 
 interface GameTag {
